@@ -51,8 +51,8 @@ The mask dataset used for model training comes from NVIDIA's paper: [Image Inpai
 NVIDIA's mask dataset is available [here](http://masc.cs.gmu.edu/wiki/partialconv)
 
 **Please note that the model training was performed on testing irregular mask dataset containing  12,000 masks.**
- 
- 
+
+
 **./samples** folder contains exemplary structure of dataset catalogs:
 ```bash
 samples
@@ -114,7 +114,7 @@ python runner.py --train_path /path/to/training/images --mask_path /path/to/mask
 In this mode the generator will be trained with only confidence-driven reconstruction loss.
 
 Below picture presents GMCNN outcome after 5 epochs training in warm-up generator mode
-![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/outputs/warm_up_generator_5_epochs.jpg)
+![](pics/outputs/warm_up_generator_5_epochs.jpg)
 
 ### WGAN-GP training
 In order to continue training with full WGAN-GP framework (GMCNN generator, local and global discriminators), execute:
@@ -155,18 +155,18 @@ Below you can find the visualization of applying Gaussian blur to the training m
 #### Large mask
 Original | 1 step | 2 steps | 3 steps | 4 steps | 5 steps | 10 steps
 ------- |  ------- | ------- | ------- | ------- | ------- | ------- 
-![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_mask_original.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_1_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_2_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_3_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_4_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_5_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/large_blurred_mask_10_step.png)
+![](pics/masks/large_mask_original.png) | ![](pics/masks/large_blurred_mask_1_step.png) | ![](pics/masks/large_blurred_mask_2_step.png) | ![](pics/masks/large_blurred_mask_3_step.png) | ![](pics/masks/large_blurred_mask_4_step.png) | ![](pics/masks/large_blurred_mask_5_step.png) | ![](pics/masks/large_blurred_mask_10_step.png) 
 
 
 #### Small mask
 Original | 1 step | 2 steps | 3 steps | 4 steps | 5 steps | 10 steps
 ------- | ------- | ------- | ------- | ------- | ------- | -------  
-![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_mask_original.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_1_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_2_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_3_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_4_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_5_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/small_blurred_mask_10_step.png)
+![](pics/masks/small_mask_original.png) | ![](pics/masks/small_blurred_mask_1_step.png) | ![](pics/masks/small_blurred_mask_2_step.png) | ![](pics/masks/small_blurred_mask_3_step.png) | ![](pics/masks/small_blurred_mask_4_step.png) | ![](pics/masks/small_blurred_mask_5_step.png) | ![](pics/masks/small_blurred_mask_10_step.png) 
 
 #### Rectangle mask
 Original | 1 step | 2 steps | 3 steps | 4 steps | 5 steps | 10 steps
 ------- | ------- | ------- | ------- | ------- | ------- | ------- 
-![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_mask_original.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_1_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_2_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_3_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_4_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_5_step.png) | ![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/masks/rectangle_blurred_mask_10_step.png)
+![](pics/masks/rectangle_mask_original.png) | ![](pics/masks/rectangle_blurred_mask_1_step.png) | ![](pics/masks/rectangle_blurred_mask_2_step.png) | ![](pics/masks/rectangle_blurred_mask_3_step.png) | ![](pics/masks/rectangle_blurred_mask_4_step.png) | ![](pics/masks/rectangle_blurred_mask_5_step.png) | ![](pics/masks/rectangle_blurred_mask_10_step.png) 
 
 
 ## Visualization of training losses
@@ -175,7 +175,7 @@ After activating TensorBoard you can monitor the following training metrics:
 1. For the generator: confidence reconstruction loss, global wasserstein loss, local wasserstein loss, id mrf loss and total loss
 2. For the local and global discriminators: fake loss, real loss, gradient penalty loss and total loss
 
-![](https://github.com/tlatkowski/inpainting-gmcnn/blob/master/pics/tb_log.png)
+![](pics/tb_log.png)
 
 ## Code References
 

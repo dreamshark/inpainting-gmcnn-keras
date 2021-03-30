@@ -10,6 +10,8 @@ from config import main_config
 from models import gmcnn_gan
 from utils import training_utils
 
+from utils import constants#lzx增加
+
 log = training_utils.get_logger()
 
 MAIN_CONFIG_FILE = './config/main_config.ini'
@@ -49,9 +51,16 @@ def main():
   parser.add_argument('--save_to',
                       default='predicted.jpg',
                       help='The save path of predicted image')
-  
+
+    #该参数lzx增加
+  parser.add_argument('--experiment_name',
+                      required=True,
+                      help='The name of experiment')
+
   args = parser.parse_args()
-  
+
+  output_paths = constants.OutputPaths(experiment_name=args.experiment_name)  # lzx增加
+
   config = main_config.MainConfig(MAIN_CONFIG_FILE)
   
   gmcnn_model = gmcnn_gan.GMCNNGan(batch_size=config.training.batch_size,
@@ -59,7 +68,8 @@ def main():
                                    img_width=config.training.img_width,
                                    num_channels=config.training.num_channels,
                                    warm_up_generator=False,
-                                   config=config)
+                                   config=config,
+                                   output_paths=output_paths)#lzx增加
   log.info('Loading GMCNN model...')
   gmcnn_model.load()
   log.info('GMCNN model successfully loaded.')
@@ -89,3 +99,4 @@ def main():
 
 if __name__ == '__main__':
   main()
+
