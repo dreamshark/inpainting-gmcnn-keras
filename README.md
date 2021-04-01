@@ -177,6 +177,82 @@ After activating TensorBoard you can monitor the following training metrics:
 
 ![](pics/tb_log.png)
 
+## Test
+
+### Environment
+
+![](https://img.shields.io/badge/Python-3.6-blue.svg) ![](https://img.shields.io/badge/Keras-2.2.4-blue.svg) ![](https://img.shields.io/badge/TensorFlow (gpu)-1.12.0-blue.svg) ![](https://img.shields.io/badge/cudatoolkit-9.0-orange.svg) ![](https://img.shields.io/badge/cudnn-7.6.5-orange.svg) 
+
+![](https://img.shields.io/badge/Pydot-2.2.4-yellow.svg) ![](https://img.shields.io/badge/Matplotlib-3.0.2-yellow.svg) ![](https://img.shields.io/badge/h5py-2.9.0-yellow.svg) ![](https://img.shields.io/badge/Pillow-6.2.0-yellow.svg) ![](https://img.shields.io/badge/OpenCV--Python-3.4.3.18-yellow.svg) ![](https://img.shields.io/badge/tqdm-4.31.1-yellow.svg) ![](https://img.shields.io/badge/scikit--image-0.14.2-yellow.svg)
+
+### Datasets
+
+```bash
+D:/dataset
+ |-masks
+    |-nvidia_masks
+ |-images
+    |-places365
+```
+
+Dataset contains  12,000 images (64 × 64) from `places365` and 12,000 masks (64 × 64) from `nvidia_masks`.
+
+### Configuration
+
+```ini
+[TRAINING]
+WGAN_TRAINING_RATIO = 5
+NUM_EPOCHS = 5
+BATCH_SIZE = 32
+IMG_HEIGHT = 64
+IMG_WIDTH = 64
+NUM_CHANNELS = 3
+LEARNING_RATE = 0.0001
+SAVE_MODEL_STEPS_PERIOD = 5
+
+[MODEL]
+ADD_MASK_AS_GENERATOR_INPUT = False
+GRADIENT_PENALTY_LOSS_WEIGHT = 10
+ID_MRF_LOSS_WEIGHT = 0.05
+ADVERSARIAL_LOSS_WEIGHT = 0.001
+NN_STRETCH_SIGMA = 0.5
+VGG_16_LAYERS = 3,6,10
+ID_MRF_STYLE_WEIGHT = 1.0
+ID_MRF_CONTENT_WEIGHT = 1.0
+NUM_GAUSSIAN_STEPS = 3
+GAUSSIAN_KERNEL_SIZE = 32
+GAUSSIAN_KERNEL_STD = 40.0
+```
+
+### Training code
+
+Execute the following code on the Anaconda Prompt( command line interface of Anaconda )
+
+```bash
+python runner.py --train_path D:/dataset/images --mask_path D:/dataset/masks --experiment_name "train12000"
+```
+
+### Training process
+
+![training_process](.\pics\test\training_process.png)
+
+### Prediction code
+
+Execute the following code on the Anaconda Prompt( command line interface of Anaconda )
+
+```bash
+python predict.py --image tests/pics/pic.jpg --mask tests/pics/small_mask.jpg --save_to tests/test_results/new_pic.jpg --experiment_name "train12000"
+```
+
+### Prediction result
+
+| ![prediction_result1](.\pics\test\prediction_result1.jpg) |
+| :-------------------------------------------------------: |
+| ![prediction_result2](.\pics\test\prediction_result2.jpg) |
+| ![prediction_result3](.\pics\test\prediction_result3.jpg) |
+| ![prediction_result4](.\pics\test\prediction_result4.jpg) |
+| ![prediction_result5](.\pics\test\prediction_result5.jpg) |
+
 ## Code References
 
 1. ID-MRF loss function was implemented with usage of original Tensorflow implementation: [GMCNN in Tensorflow](https://github.com/shepnerd/inpainting_gmcnn)
