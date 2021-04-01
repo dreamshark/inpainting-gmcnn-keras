@@ -181,7 +181,7 @@ After activating TensorBoard you can monitor the following training metrics:
 
 ### Environment
 
-![](https://img.shields.io/badge/Python-3.6-blue.svg) ![](https://img.shields.io/badge/Keras-2.2.4-blue.svg) ![](https://img.shields.io/badge/TensorFlow (gpu)-1.12.0-blue.svg) ![](https://img.shields.io/badge/cudatoolkit-9.0-orange.svg) ![](https://img.shields.io/badge/cudnn-7.6.5-orange.svg) 
+![](https://img.shields.io/badge/Python-3.6-blue.svg) ![](https://img.shields.io/badge/Keras-2.2.4-blue.svg) ![](https://img.shields.io/badge/TensorFlow%20(gpu)-1.12.0-blue) ![](https://img.shields.io/badge/cudatoolkit-9.0-orange.svg) ![](https://img.shields.io/badge/cudnn-7.6.5-orange.svg) 
 
 ![](https://img.shields.io/badge/Pydot-2.2.4-yellow.svg) ![](https://img.shields.io/badge/Matplotlib-3.0.2-yellow.svg) ![](https://img.shields.io/badge/h5py-2.9.0-yellow.svg) ![](https://img.shields.io/badge/Pillow-6.2.0-yellow.svg) ![](https://img.shields.io/badge/OpenCV--Python-3.4.3.18-yellow.svg) ![](https://img.shields.io/badge/tqdm-4.31.1-yellow.svg) ![](https://img.shields.io/badge/scikit--image-0.14.2-yellow.svg)
 
