@@ -16,7 +16,7 @@ log = training_utils.get_logger()
 
 MAIN_CONFIG_FILE = './config/main_config.ini'
 
-#归一化图像
+
 def preprocess_image(image, model_input_height, model_input_width):
   image = image[..., [2, 1, 0]]
   image = (image - 127.5) / 127.5
@@ -26,12 +26,13 @@ def preprocess_image(image, model_input_height, model_input_width):
 
 
 def preprocess_mask(mask, model_input_height, model_input_width):
-  mask[mask == 255] = 1
+  mask[mask <128 ] = 0 # mzh增加
+  mask[mask >= 128] = 1 # mzh增加
   mask = cv2.resize(mask, (model_input_height, model_input_width))
   mask = np.expand_dims(mask, 0)
   return mask
 
-#归一化图像恢复到原图像
+
 def postprocess_image(image):
   image = (image + 1) * 127.5
   return image
@@ -76,28 +77,30 @@ def main():
   
   image = cv2.imread(args.image)
   mask = cv2.imread(args.mask)
-  
+
   image = preprocess_image(image, config.training.img_height, config.training.img_width)
   mask = preprocess_mask(mask, config.training.img_height, config.training.img_width)
   
   log.info('Making prediction...')
   predicted = gmcnn_model.predict([image, mask])
-  
   predicted = postprocess_image(predicted)
   
   masked = deepcopy(image)
   masked = postprocess_image(masked)
   masked[mask == 1] = 255
 
+  constructed = deepcopy(masked)
+  constructed[mask==1] = predicted[mask==1]
+
   result_image = np.concatenate((masked[0][..., [2, 1, 0]],
                                  predicted[0][..., [2, 1, 0]],
+                                 constructed[0][..., [2, 1, 0]],
                                  image[0][..., [2, 1, 0]] * 127.5 + 127.5),
                                 axis=1)
   
-  cv2.imwrite(args.save_to, predicted[0][..., [2, 1, 0]])
+  cv2.imwrite(args.save_to, result_image)
   log.info('Saved results to: %s', args.save_to)
 
 
 if __name__ == '__main__':
   main()
-
