@@ -177,7 +177,7 @@ After activating TensorBoard you can monitor the following training metrics:
 
 ![](pics/tb_log.png)
 
-## Test
+## TEST
 
 ### Environment
 
