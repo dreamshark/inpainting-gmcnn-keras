@@ -234,7 +234,7 @@ python runner.py --train_path D:/dataset/images --mask_path D:/dataset/masks --e
 
 ### Training process
 
-![training_process](pics\test\training_process.png)
+![training_process](pics/test/training_process.png)
 
 ### Prediction code
 
@@ -246,12 +246,12 @@ python predict.py --image tests/pics/pic.jpg --mask tests/pics/small_mask.jpg --
 
 ### Prediction result
 
-| ![prediction_result1](pics\test\prediction_result1.jpg) |
+| ![prediction_result1](pics/test/prediction_result1.jpg) |
 | :-----------------------------------------------------: |
-| ![prediction_result2](pics\test\prediction_result2.jpg) |
-| ![prediction_result3](pics\test\prediction_result3.jpg) |
-| ![prediction_result4](pics\test\prediction_result4.jpg) |
-| ![prediction_result5](pics\test\prediction_result5.jpg) |
+| ![prediction_result2](pics/test/prediction_result2.jpg) |
+| ![prediction_result3](pics/test/prediction_result3.jpg) |
+| ![prediction_result4](pics/test/prediction_result4.jpg) |
+| ![prediction_result5](pics/test/prediction_result5.jpg) |
 
 ## Code References
 
