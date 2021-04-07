@@ -40,27 +40,29 @@ def postprocess_image(image):
 
 def main():
   parser = ArgumentParser()
-  
-  parser.add_argument('--image',
-                      required=True,
-                      help='The path to the image')
-  
-  parser.add_argument('--mask',
-                      required=True,
-                      help='The path to the mask')
-  
-  parser.add_argument('--save_to',
-                      default='predicted.jpg',
-                      help='The save path of predicted image')
-
-    #该参数lzx增加
-  parser.add_argument('--experiment_name',
-                      required=True,
-                      help='The name of experiment')
-
+  #
+  # parser.add_argument('--image',
+  #                     required=True,
+  #                     help='The path to the image')
+  #
+  # parser.add_argument('--mask',
+  #                     required=True,
+  #                     help='The path to the mask')
+  #
+  # parser.add_argument('--save_to',
+  #                     default='predicted.jpg',
+  #                     help='The save path of predicted image')
+  #
+  #   #该参数lzx增加
+  # parser.add_argument('--experiment_name',
+  #                     required=True,
+  #                     help='The name of experiment')
+  #
   args = parser.parse_args()
-
-  output_paths = constants.OutputPaths(experiment_name=args.experiment_name)  # lzx增加
+  args.image="tests/pics/pic_128.jpg"
+  args.mask="tests/pics/small_mask_128.jpg"
+  args.save_to="tests/test_results/new_pic_128.jpg"
+  output_paths = constants.OutputPaths(experiment_name="train12000_128")  # lzx增加
 
   config = main_config.MainConfig(MAIN_CONFIG_FILE)
   
