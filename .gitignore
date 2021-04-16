@@ -106,3 +106,4 @@ venv.bak/
 /outputs
 /tests/test_results/*.png
 .idea
+config/main_config.ini
