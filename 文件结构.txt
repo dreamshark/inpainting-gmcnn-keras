@@ -1,6 +1,3 @@
-卷 Data 的文件夹 PATH 列表
-卷序列号为 CAA1-C725
-D:.
 ├─.github
 │  └─workflows
 ├─colab
