@@ -1,4 +1,3 @@
-@@ -1,260 +0,0 @@
 ![](https://img.shields.io/badge/Python-3.6-blue.svg) ![](https://img.shields.io/badge/Keras-2.2.4-blue.svg) ![](https://img.shields.io/badge/TensorFlow-1.12.0-blue.svg) ![](https://img.shields.io/badge/License-MIT-blue.svg)
 
 # Generative Multi-column Convolutional Neural Networks inpainting model in Keras
@@ -27,15 +26,15 @@ To install requirements, create Python virtual environment and install dependenc
 ```bash
 virtualenv -p /usr/bin/python3.6 .venv
 source .venv/bin/activate
-pip install -r requirements/requirements.txt
+pip install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 In case of using GPU support:
 ```bash
-pip install -r requirements/requirements-gpu.txt
+pip install -r requirements/requirements-gpu.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 Otherwise (CPU usage):
 ```bash
-pip install -r requirements/requirements-cpu.txt
+pip install -r requirements/requirements-cpu.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 

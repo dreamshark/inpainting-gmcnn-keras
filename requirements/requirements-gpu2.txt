@@ -1,0 +1,2 @@
+cudatoolkit=9.0
+cudnn=7.6.5

@@ -91,7 +91,7 @@ def main(picture_address,mask_address,save_address):
     constructed[mask == 1] = predicted[mask == 1]
 
     result_image = np.concatenate((masked[0][..., [2, 1, 0]],
-                                   predicted[0][..., [2, 1, 0]],
+                                   # predicted[0][..., [2, 1, 0]],
                                    constructed[0][..., [2, 1, 0]],
                                    image[0][..., [2, 1, 0]] * 127.5 + 127.5),
                                   axis=1)
