@@ -177,15 +177,29 @@ After activating TensorBoard you can monitor the following training metrics:
 
 ![](pics/tb_log.png)
 
+## GUI
+
+![GUI1](pics/GUI/GUI1.png)
+
+![GUI1](pics/GUI/GUI2.png)
+
 ## TEST
 
-### Environment
+### 环境
 
 ![](https://img.shields.io/badge/Python-3.6-blue.svg) ![](https://img.shields.io/badge/Keras-2.2.4-blue.svg) ![](https://img.shields.io/badge/TensorFlow%20(gpu)-1.12.0-blue) ![](https://img.shields.io/badge/cudatoolkit-9.0-orange.svg) ![](https://img.shields.io/badge/cudnn-7.6.5-orange.svg) 
 
 ![](https://img.shields.io/badge/Pydot-2.2.4-yellow.svg) ![](https://img.shields.io/badge/Matplotlib-3.0.2-yellow.svg) ![](https://img.shields.io/badge/h5py-2.9.0-yellow.svg) ![](https://img.shields.io/badge/Pillow-6.2.0-yellow.svg) ![](https://img.shields.io/badge/OpenCV--Python-3.4.3.18-yellow.svg) ![](https://img.shields.io/badge/tqdm-4.31.1-yellow.svg) ![](https://img.shields.io/badge/scikit--image-0.14.2-yellow.svg)
 
-### Datasets
+### 数据集及预处理
+
+​	该项目使用了生成对抗网络模型，采用的是无监督学习的方式，故不需要图片带有标签。系统需要未受损的图像及遮罩（mask）合成成受损图像进行训练，如下图所示。对于（未受损的）图像集和遮罩（mask）集，本项目分别采用了`Places365`数据集和`NVIDIA’s mask`数据集。
+
+![Image preprocessing](pics/train/image preprocessing.jpg)
+
+​	`Place365` 系列数据集由 MIT 发布，应用范围广泛、数据种类多，数据量庞大，而`NVIDIA’s mask`数据集包含各式各样的大型、小型遮罩图片，以模拟图片在各种不同情况下的损坏、遮掩，应用范围极其广泛。本项目根据训练需要，从每个数据集都从中各自抽取12000张图片并将宽和高均处理为128（即每张图片的尺寸为128×128）作为训练集，再额外抽取若干张图片作为测试集。
+
+​	本次实验将数据集放于下示路径。
 
 ```bash
 D:/dataset
@@ -195,9 +209,7 @@ D:/dataset
     |-places365
 ```
 
-Dataset contains  12,000 images (64 × 64) from `places365` and 12,000 masks (64 × 64) from `nvidia_masks`.
-
-### Configuration
+### 配置
 
 ```ini
 [TRAINING]
@@ -224,34 +236,38 @@ GAUSSIAN_KERNEL_SIZE = 32
 GAUSSIAN_KERNEL_STD = 40.0
 ```
 
-### Training code
+### 训练代码
 
-Execute the following code on the Anaconda Prompt( command line interface of Anaconda )
+​	在Anaconda Prompt( Anaconda的命令行界面 )执行以下代码
 
 ```bash
 python runner.py --train_path D:/dataset/images --mask_path D:/dataset/masks --experiment_name "train12000"
 ```
 
-### Training process
+### 训练过程
 
-![training_process](pics/test/training_process.png)
+​	根据未受损的图像集和遮罩集，给定一定的参数，让系统进行训练并每5个step进行一次图像预测的记录，最后通过TensorBoard查看可视化训练过程中的数据变化。
 
-### Prediction code
+![training_process](pics/train/training_process.png)
 
-Execute the following code on the Anaconda Prompt( command line interface of Anaconda )
+<center>训练过程图像预测记录</center>
 
-```bash
-python predict.py --image tests/pics/pic.jpg --mask tests/pics/small_mask.jpg --save_to tests/test_results/new_pic.jpg --experiment_name "train12000"
-```
+![generator_loss](pics/train/generator_loss.png)
 
-### Prediction result
+<center>生成器损失数值相关记录</center>
 
-| ![prediction_result1](pics/test/prediction_result1.jpg) |
-| :-----------------------------------------------------: |
-| ![prediction_result2](pics/test/prediction_result2.jpg) |
-| ![prediction_result3](pics/test/prediction_result3.jpg) |
-| ![prediction_result4](pics/test/prediction_result4.jpg) |
-| ![prediction_result5](pics/test/prediction_result5.jpg) |
+![global_discriminator_loss](pics/train/global_discriminator_loss.png)
+
+<center>全局判别器损失数值相关记录</center>
+
+![local_discriminator_loss](pics/train/local_discriminator_loss.png)
+
+<center>局部判别器损失数值相关记录</center>
+
+### 图像修复
+
+![prediction_result](pics/prediction/prediction_result.jpg)
+
 
 ## Code References
 
