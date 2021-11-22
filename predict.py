@@ -150,7 +150,7 @@ class Ui_GAN(object):
 
     def retranslateUi(self, GAN):
         _translate = QtCore.QCoreApplication.translate
-        GAN.setWindowTitle(_translate("GAN", "图像修复"))
+        GAN.setWindowTitle(_translate("GAN", "Gan图像"))
         self.create.setText(_translate("GAN", "生成结果"))
         self.picture_address.setText(_translate("GAN", "原图地址"))
         self.mask_address.setText(_translate("GAN", "遮罩地址"))
